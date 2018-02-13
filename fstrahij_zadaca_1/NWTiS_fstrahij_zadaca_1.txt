@@ -1,0 +1,10 @@
+#NWTIS konfiguracija
+port=8000
+intervalNadzorneDretve=10000
+maksVrijemeRadneDretve=30000
+intervalAdresneDretve=20000
+maksAdresa=10
+maksBrojRadnihDretvi=7
+brojZahtjevaZaSerijalizaciju=100
+evidDatoteka=DZ_1_evidencija.bin
+adminDatoteka=DZ1_administratori.txt

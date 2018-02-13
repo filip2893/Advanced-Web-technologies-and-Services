@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>NWTiS dkermek</comment>
+<entry key="port">8000</entry>
+<entry key="intervalNadzorneDretve">10000</entry>
+<entry key="maksVrijemeRadneDretve">30000</entry>
+<entry key="intervalAdresneDretve">20000</entry>
+<entry key="maksAdresa">10</entry>
+<entry key="maksBrojRadnihDretvi">7</entry>
+<entry key="brojZahtjevaZaSerijalizaciju">100</entry>
+<entry key="intervalSerijalizacije">60</entry>
+<entry key="evidDatoteka">DZ_1_evidencija.bin</entry>
+<entry key="adminDatoteka">DZ_1_administratori.txt</entry>
+</properties>
