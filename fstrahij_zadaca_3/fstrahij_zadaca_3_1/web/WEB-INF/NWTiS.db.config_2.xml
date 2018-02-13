@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>NWTIS konfiguracija - JavaDB</comment>
+<entry key="server.database">jdbc:derby://localhost:1527/</entry>
+<entry key="admin.username">nwtis_g3</entry>
+<entry key="admin.password">g3_nwtis</entry>
+<entry key="admin.database">nwtis_g3</entry>
+<entry key="user.username">nwtis_g3</entry>
+<entry key="user.password">g3_nwtis</entry>
+<entry key="user.database">nwtis_g3</entry>
+<entry key="driver.database.odbc">sun.jdbc.odbc.JdbcOdbcDriver</entry>
+<entry key="driver.database.mysql">com.mysql.jdbc.Driver</entry>
+<entry key="driver.database.derby">org.apache.derby.jdbc.ClientDriver</entry>
+<entry key="driver.database.postgresql">org.postgresql.Driver</entry>
+<entry key="intervalDretveZaMeteoPodatke">60</entry>
+<entry key="apikey">da4c3f6d21285a3d67a1117183a99743</entry>
+</properties>

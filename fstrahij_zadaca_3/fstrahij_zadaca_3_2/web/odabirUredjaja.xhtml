@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view transient="true">
+        <h:head>
+            <title>Odabir uređaja</title>
+        </h:head>
+        <h:body>
+            Odabir uređaja
+            <h:form>
+                <h:outputLabel value="Naziv i adresa:"/>
+                <h:inputText id="naziv" value="#{odabirUredjaja.naziv}"/>
+                <h:inputText id="adresa" value="#{odabirUredjaja.adresa}"/>
+                <h:commandButton value="Upiši SOAP" action="#{odabirUredjaja.dodajNoviUredjaj()}" /><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <h:commandButton value="Upiši REST" action="#{odabirUredjaja.dodajNoviUredjajRest()}"/><br/>
+                       
+                <h:selectManyListbox value="#{odabirUredjaja.proba}" size="7">
+                    <f:selectItems  value="#{odabirUredjaja.uredjaji}"
+                                   var="uredaj" 
+                                   itemLabel="#{uredaj.naziv}"
+                                   itemValue="#{uredaj.id}" />
+                </h:selectManyListbox>
+                <h:outputLabel value="Od-do:"/>
+                <h:inputText id="od" value="#{odabirUredjaja.od}"/>
+                <h:inputText id="do" value="#{odabirUredjaja.doo}"/><br/>
+            
+                <h:commandButton value="Preuzmi SOAP"  action="#{odabirUredjaja.dohvatiMeteoSoap()}" /><br/>
+                <h:commandButton value="Preuzmi REST"/><br/> 
+                <h:dataTable value="#{odabirUredjaja.meteo}" var="p">
+                    <h:column>
+                        <f:facet name="header">sunRise</f:facet>
+                        <h:outputText value="#{p.sunRise}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">sunSet</f:facet>
+                        <h:outputText value="#{p.sunSet}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">temperatura</f:facet>
+                        <h:outputText value="#{p.temperatureValue}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">temperatura Min</f:facet>
+                        <h:outputText value="#{p.temperatureMin}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">temperatura Max</f:facet>
+                        <h:outputText value="#{p.temperatureMax}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">temperatura Oznaka</f:facet>
+                        <h:outputText value="#{p.temperatureUnit}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">vlaga</f:facet>
+                        <h:outputText value="#{p.humidityValue}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">vlaga oznaka</f:facet>
+                        <h:outputText value="#{p.humidityUnit}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">tlak</f:facet>
+                        <h:outputText value="#{p.pressureValue}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">tlak oznaka</f:facet>
+                        <h:outputText value="#{p.pressureUnit}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">vjetar</f:facet>
+                        <h:outputText value="#{p.windSpeedValue}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">vjetar naziv</f:facet>
+                        <h:outputText value="#{p.windSpeedName}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">smjer vjetra</f:facet>
+                        <h:outputText value="#{p.windDirectionValue}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">smjer vjetra kod</f:facet>
+                        <h:outputText value="#{p.windDirectionCode}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">smjer vjetra naziv</f:facet>
+                        <h:outputText value="#{p.windDirectionName}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">oblaci</f:facet>
+                        <h:outputText value="#{p.cloudsValue}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">oblaci naziv</f:facet>
+                        <h:outputText value="#{p.cloudsName}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">vidljivost</f:facet>
+                        <h:outputText value="#{p.visibility}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">taloženje</f:facet>
+                        <h:outputText value="#{p.precipitationValue}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">taloženje mode</f:facet>
+                        <h:outputText value="#{p.precipitationMode}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">taloženje oznaka</f:facet>
+                        <h:outputText value="#{p.precipitationUnit}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">vrijeme broj</f:facet>
+                        <h:outputText value="#{p.weatherNumber}" />
+                    </h:column>                    
+                    <h:column>
+                        <f:facet name="header">vrijeme</f:facet>
+                        <h:outputText value="#{p.weatherValue}" />
+                    </h:column>                    
+                    <h:column>
+                        <f:facet name="header">vrijeme oznaka</f:facet>
+                        <h:outputText value="#{p.weatherIcon}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">preuzeto</f:facet>
+                        <h:outputText value="#{p.lastUpdate}" />
+                    </h:column>
+                </h:dataTable>   
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
+
