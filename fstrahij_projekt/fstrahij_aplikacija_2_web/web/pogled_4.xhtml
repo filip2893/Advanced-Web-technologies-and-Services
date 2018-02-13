@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{lokalizator.odabraniJezik}">
+        <body>
+
+            <ui:composition template="./predlozak.xhtml">
+
+                <ui:define name="naslov">
+
+                </ui:define>
+
+                <ui:define name="top">
+
+                </ui:define>
+
+                <ui:define name="left">
+                    <h:link value="#{m.prijava_pocetna}" outcome="pocetna" /><br/><br/>
+                </ui:define>
+
+                <ui:define name="content">
+                    <h:form>                         
+                        <h:panelGrid columns="2">
+                            <p:commandButton actionListener="#{pogled_4.ioT_MasterList()}" update="lista odg" value="#{m.pogled_4_IoT_Master_lista}"/>
+                            <p:commandButton actionListener="#{pogled_4.ioT_MasterLoad()}" update="odg" value="#{m.pogled_4_IoT_Master_ucitaj}"/>
+                            <p:commandButton actionListener="#{pogled_4.ioT_MasterClear()}" update="odg" value="#{m.pogled_4_IoT_Master_ocisti}"/>
+                            <h:selectManyListbox size="10" value="#{pogled_4.popisListaIoT}"  id="lista">
+                                <f:selectItems value="#{pogled_4.listaIoT}"  var="ra" 
+                                               itemLabel="#{ra.labela}" itemValue="#{ra.vrijednost}" />
+                            </h:selectManyListbox>
+                            <p:commandButton actionListener="#{pogled_4.ioT_Wait()}" update="odg" value="#{m.pogled_4_IoT_cekaj}"/>
+                            <p:commandButton actionListener="#{pogled_4.ioT_Work()}" update="odg" value="#{m.pogled_4_IoT_radi}"/>
+                            <p:commandButton actionListener="#{pogled_4.ioT_Remove()}" update="odg" value="#{m.pogled_4_IoT_obrisi}"/>
+                            <p:commandButton actionListener="#{pogled_4.ioT_Status()}" update="odg" value="#{m.pogled_4_IoT_status}"/>
+                            
+                        </h:panelGrid> 
+                        <br/>
+                        <h:panelGrid columns="2">
+                            <p:commandButton actionListener="#{pogled_4.ioT_Add()}" update="odg" value="#{m.pogled_4_IoT_dodaj}"/>
+                            <h:selectManyListbox size="10" value="#{pogled_4.popisRaspoloziviIoT}">
+                                <f:selectItems value="#{pogled_4.raspoloziviIoT}"  var="r" 
+                                               itemLabel="#{r.labela}" itemValue="#{r.vrijednost}" />
+                            </h:selectManyListbox>
+                        </h:panelGrid>   
+                        <h:outputLabel value="#{pogled_4.odgovor}" id="odg"/>
+                    </h:form>
+                </ui:define>
+                
+                <ui:define name="bottom">
+
+                </ui:define>
+
+            </ui:composition>
+        </body>
+    </f:view>
+
+</html>

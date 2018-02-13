@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./predlozak.xhtml">
+
+            <ui:define name="naslov">
+            </ui:define>
+
+            <ui:define name="top">
+            </ui:define>
+
+            <ui:define name="left">
+                <h:link value="pocetna" outcome="pocetna" />
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                        <h:panelGrid columns="3">
+                            <p:commandButton actionListener="#{pogled2.IoT_MasterStart}" update="odg" value="Start"/>  
+                            <p:commandButton actionListener="#{pogled2.IoT_MasterStop}" update="odg" value="Stop"/>
+                            <p:commandButton actionListener="#{pogled2.IoT_MasterWork}" update="odg" value="Work"/>  
+                            <p:commandButton actionListener="#{pogled2.IoT_MasterWait}" update="odg" value="Wait"/>
+                            <p:commandButton actionListener="#{pogled2.IoT_MasterStatus}" update="odg" value="Status"/>
+                        </h:panelGrid>
+                        <h:outputLabel value="#{pogled2.odgovor}" id="odg"/>
+                    </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

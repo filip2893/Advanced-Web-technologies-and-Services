@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{lokalizator.odabraniJezik}">
+        <body>
+
+            <ui:composition template="./predlozak.xhtml">
+
+                <ui:define name="naslov">
+                     #{m.registracija_naslov}
+                </ui:define>
+
+                <ui:define name="top">
+                    #{m.registracija_naslov}
+                </ui:define>
+
+                <ui:define name="left">
+                    <h:link value="#{m.registracija_pocetna}" outcome="pocetna" /><br/>
+                    <h:link value="#{m.registracija_prijava}" outcome="prijava" /><br/>
+                </ui:define>
+
+                <ui:define name="content">
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="#{m.registracija_ime}" for="ime" />
+                            <p:inputText value="#{registracijaKorisnika.ime}" id="ime" />
+                            <h:outputLabel value="#{m.registracija_prezime}" for="prezime" />
+                            <p:inputText value="#{registracijaKorisnika.prezime}" id="prezime" />
+                            <h:outputLabel value="#{m.registracija_korime}" for="korime" />
+                            <p:inputText value="#{registracijaKorisnika.korime}" id="korime" />
+                            <h:outputLabel value="#{m.registracija_lozinka}" for="lozinka" />
+                            <p:password value="#{registracijaKorisnika.lozinka}" id="lozinka" />
+                            <h:outputLabel value="#{m.registracija_ploznika}" for="plozinka" />
+                            <p:password value="#{registracijaKorisnika.plozinka}" id="plozinka" />
+                            <h:outputLabel value="#{m.registracija_email}" for="email" />
+                            <p:inputText value="#{registracijaKorisnika.email}" id="email" />
+                            <p:commandButton update="greske" actionListener="#{registracijaKorisnika.registracija()}" value="#{m.registracija_gumb}"/>                    
+                            <h:outputText value="#{registracijaKorisnika.greske}" id ="greske" />
+                        </h:panelGrid>                        
+                    </h:form>
+                </ui:define>
+
+                <ui:define name="bottom">
+                </ui:define>
+
+            </ui:composition>
+
+        </body>
+    </f:view>
+
+</html>

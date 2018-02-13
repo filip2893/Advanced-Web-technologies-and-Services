@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view locale="#{lokalizator.odabraniJezik}">
+        <body>
+
+            <ui:composition template="./predlozak.xhtml">
+
+                <ui:define name="naslov">
+                </ui:define>
+
+                <ui:define name="top">
+                </ui:define>
+
+                <ui:define name="left">
+                    <h:link value="#{m.prijava_pocetna}" outcome="pocetna" /><br/><br/>
+                </ui:define>
+
+                <ui:define name="content">
+                    <h:form>
+                        <h:outputLabel value="#{m.mail_odaberi}" />:
+                        <h:selectOneMenu value="#{mail.odabranaMapa}">
+                            <f:selectItems value="#{mail.mape}" var="f" 
+                                           itemLabel="#{f.labela}" itemValue="#{f.vrijednost}"/>
+                        </h:selectOneMenu>
+                        <p:commandButton value="#{m.mail_promjena}" update="pregled" action="#{mail.promjenaMape()}"/>
+                        <br/>
+                        <p:dataTable var="por" value="#{mail.poruke}" id="pregled"
+                                     paginator="true" rows="#{mail.brojPrikazanihPoruka}">
+                            <p:column headerText="#{m.mail_predmet}">
+                                <h:outputText value="#{por.predmet}"/>
+                            </p:column>
+                            <p:column headerText="#{m.mail_sadrzaj}">
+                                <h:outputText value="#{por.sadrzaj}"/>
+                            </p:column>
+                            <p:column headerText="#{m.mail_salje}">
+                                <h:outputText value="#{por.salje}"/>
+                            </p:column>
+                            <p:column headerText="#{m.mail_vr_prijem}">
+                                <h:outputText value="#{por.vrijemePrijema}"/>
+                            </p:column>
+                            <p:column headerText="#{m.mail_vr_slanja}">
+                                <h:outputText value="#{por.vrijemeSlanja}"/>
+                            </p:column>
+                            <p:column headerText="#{m.mail_vrsta}">
+                                <h:outputText value="#{por.vrsta}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </ui:define>
+
+                <ui:define name="bottom">
+                </ui:define>
+
+            </ui:composition>
+
+        </body>
+    </f:view>    
+</html>

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view locale="#{lokalizator.odabraniJezik}">
+        <body>
+
+            <ui:composition template="./predlozak.xhtml">
+
+                <ui:define name="naslov">
+                </ui:define>
+
+                <ui:define name="top">
+                </ui:define>
+
+                <ui:define name="left">
+                </ui:define>
+
+                <ui:define name="content">
+                    <h:form>
+                        <br/>
+                        <h:outputLabel for="korisnik" value="#{m.dnevnik_korisnik}"/>
+                        <p:inputText id="korisnik" />
+                        <br/>
+                        <h:outputLabel for="ip" value="#{m.dnevnik_ip}"/>
+                        <p:inputText id="ip" />
+                        <br/>
+                        <h:outputLabel for="trajanje" value="#{m.dnevnik_trajanje}"/>
+                        <p:inputText id="trajanje" />
+                        <br/>
+                        <h:outputLabel for="status" value="#{m.dnevnik_status}"/>
+                        <p:inputText id="status" />
+                        <br/>
+                        <p:commandButton value="#{m.dnevnik_dohvati}" />
+
+                        <p:dataTable var="dn" value="#{pregledDnevnika.dnevnik}" id="pregled">
+                            <p:column headerText="#{m.dnevnik_korisnik}">
+                            </p:column>
+                            <p:column headerText="#{m.dnevnik_ip}">
+                            </p:column>
+                            <p:column headerText="#{m.dnevnik_url}">
+                            </p:column>
+                            <p:column headerText="#{m.dnevnik_status}">
+                            </p:column>
+                            <p:column headerText="#{m.dnevnik_trajanje}">
+                            </p:column>
+                            <p:column headerText="#{m.dnevnik_vrijeme}">
+                            </p:column>
+                        </p:dataTable>
+
+                    </h:form>
+                </ui:define>
+
+                <ui:define name="bottom">
+                </ui:define>
+
+            </ui:composition>
+
+        </body>
+    </f:view>    
+</html>

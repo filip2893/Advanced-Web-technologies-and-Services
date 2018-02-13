@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://nwtis.foi.hr:8080/DZ3_Master/IoT_Master?wsdl" uri="src/conf/xml-resources/web-services/IoT_MasterClient/wsdl/nwtis.foi.hr_8080/DZ3_Master/IoT_Master.wsdl"/>
+    <system systemId="http://nwtis.foi.hr:8080/DZ3_Master/IoT_Master?xsd=1" uri="src/conf/xml-resources/web-services/IoT_MasterClient/wsdl/nwtis.foi.hr_8080/DZ3_Master/IoT_Master.xsd_1.xsd"/>
+</catalog>

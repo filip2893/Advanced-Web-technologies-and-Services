@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./predlozak.xhtml">
+            <ui:define name="naslov">
+                NWTiS - Zahtjev
+            </ui:define>
+
+            <ui:define name="top">
+                Pregled zahtjeva
+            </ui:define>
+
+            <ui:define name="left">
+                <h:link value="Početna" outcome="pocetna" /><br/>
+                <h:link value="Korisnici" outcome="korisnik" /><br/>
+                <h:link value="Dnevnik" outcome="dnevnik" /><br/>
+            </ui:define>
+
+            <ui:define name="content">                
+                    <h:form>
+                        <p:commandButton value="Ucitaj zahtjeve" action="#{pregledZahtjeva.dajZahtjeve()}" update="tablica"/>
+                        <p:dataTable id="tablica" var="zah" value="#{pregledZahtjeva.zahtjevi}" 
+                                     paginator="true" rows="#{pregledZahtjeva.str}">
+                        <p:column headerText="Korisničko ime">
+                            <h:outputText value="#{zah.korime}"/>
+                        </p:column>
+                        <p:column headerText="Vrsta">
+                            <h:outputText value="#{zah.vrsta}"/>
+                        </p:column>
+                        <p:column headerText="Datum">
+                            <h:outputText value="#{zah.datum}"/>
+                        </p:column>
+                    </p:dataTable> 
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,354 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://serveri.ws.dkermek.nwtis.foi.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://serveri.ws.dkermek.nwtis.foi.org/">
+
+<xs:element name="aktivirajGrupuIoT" type="tns:aktivirajGrupuIoT" />
+
+<xs:element name="aktivirajGrupuIoTResponse" type="tns:aktivirajGrupuIoTResponse" />
+
+<xs:element name="aktivirajOdabraneUredjajeGrupe" type="tns:aktivirajOdabraneUredjajeGrupe" />
+
+<xs:element name="aktivirajOdabraneUredjajeGrupeResponse" type="tns:aktivirajOdabraneUredjajeGrupeResponse" />
+
+<xs:element name="aktivirajUredjajGrupe" type="tns:aktivirajUredjajGrupe" />
+
+<xs:element name="aktivirajUredjajGrupeResponse" type="tns:aktivirajUredjajGrupeResponse" />
+
+<xs:element name="autenticirajGrupuIoT" type="tns:autenticirajGrupuIoT" />
+
+<xs:element name="autenticirajGrupuIoTResponse" type="tns:autenticirajGrupuIoTResponse" />
+
+<xs:element name="blokirajGrupuIoT" type="tns:blokirajGrupuIoT" />
+
+<xs:element name="blokirajGrupuIoTResponse" type="tns:blokirajGrupuIoTResponse" />
+
+<xs:element name="blokirajOdabraneUredjajeGrupe" type="tns:blokirajOdabraneUredjajeGrupe" />
+
+<xs:element name="blokirajOdabraneUredjajeGrupeResponse" type="tns:blokirajOdabraneUredjajeGrupeResponse" />
+
+<xs:element name="blokirajUredjajGrupe" type="tns:blokirajUredjajGrupe" />
+
+<xs:element name="blokirajUredjajGrupeResponse" type="tns:blokirajUredjajGrupeResponse" />
+
+<xs:element name="dajStatusGrupeIoT" type="tns:dajStatusGrupeIoT" />
+
+<xs:element name="dajStatusGrupeIoTResponse" type="tns:dajStatusGrupeIoTResponse" />
+
+<xs:element name="dajStatusUredjajaGrupe" type="tns:dajStatusUredjajaGrupe" />
+
+<xs:element name="dajStatusUredjajaGrupeResponse" type="tns:dajStatusUredjajaGrupeResponse" />
+
+<xs:element name="dajSveUredjajeGrupe" type="tns:dajSveUredjajeGrupe" />
+
+<xs:element name="dajSveUredjajeGrupeResponse" type="tns:dajSveUredjajeGrupeResponse" />
+
+<xs:element name="deregistrirajGrupuIoT" type="tns:deregistrirajGrupuIoT" />
+
+<xs:element name="deregistrirajGrupuIoTResponse" type="tns:deregistrirajGrupuIoTResponse" />
+
+<xs:element name="dodajNoviUredjajGrupi" type="tns:dodajNoviUredjajGrupi" />
+
+<xs:element name="dodajNoviUredjajGrupiResponse" type="tns:dodajNoviUredjajGrupiResponse" />
+
+<xs:element name="dodajUredjajGrupi" type="tns:dodajUredjajGrupi" />
+
+<xs:element name="dodajUredjajGrupiResponse" type="tns:dodajUredjajGrupiResponse" />
+
+<xs:element name="obrisiOdabraneUredjajeGrupe" type="tns:obrisiOdabraneUredjajeGrupe" />
+
+<xs:element name="obrisiOdabraneUredjajeGrupeResponse" type="tns:obrisiOdabraneUredjajeGrupeResponse" />
+
+<xs:element name="obrisiSveUredjajeGrupe" type="tns:obrisiSveUredjajeGrupe" />
+
+<xs:element name="obrisiSveUredjajeGrupeResponse" type="tns:obrisiSveUredjajeGrupeResponse" />
+
+<xs:element name="obrisiUredjajGrupe" type="tns:obrisiUredjajGrupe" />
+
+<xs:element name="obrisiUredjajGrupeResponse" type="tns:obrisiUredjajGrupeResponse" />
+
+<xs:element name="registrirajGrupuIoT" type="tns:registrirajGrupuIoT" />
+
+<xs:element name="registrirajGrupuIoTResponse" type="tns:registrirajGrupuIoTResponse" />
+
+<xs:element name="ucitajSveUredjajeGrupe" type="tns:ucitajSveUredjajeGrupe" />
+
+<xs:element name="ucitajSveUredjajeGrupeResponse" type="tns:ucitajSveUredjajeGrupeResponse" />
+
+<xs:complexType name="dajStatusGrupeIoT">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dajStatusGrupeIoTResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:statusKorisnika" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dodajUredjajGrupi">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+<xs:element name="iotUredjaj" type="tns:uredjaj" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="uredjaj">
+<xs:sequence>
+<xs:element name="geoloc" type="tns:lokacija" minOccurs="0" />
+<xs:element name="id" type="xs:int" />
+<xs:element name="naziv" type="xs:string" minOccurs="0" />
+<xs:element name="status" type="tns:statusUredjaja" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="lokacija">
+<xs:sequence>
+<xs:element name="latitude" type="xs:string" minOccurs="0" />
+<xs:element name="longitude" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dodajUredjajGrupiResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aktivirajUredjajGrupe">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+<xs:element name="idUredjaj" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aktivirajUredjajGrupeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obrisiOdabraneUredjajeGrupe">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+<xs:element name="odabraniUredjaji" type="xs:int" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obrisiOdabraneUredjajeGrupeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aktivirajGrupuIoT">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aktivirajGrupuIoTResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obrisiSveUredjajeGrupe">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obrisiSveUredjajeGrupeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obrisiUredjajGrupe">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+<xs:element name="idUredjaj" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obrisiUredjajGrupeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ucitajSveUredjajeGrupe">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ucitajSveUredjajeGrupeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deregistrirajGrupuIoT">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deregistrirajGrupuIoTResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="blokirajOdabraneUredjajeGrupe">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+<xs:element name="odabraniUredjaji" type="xs:int" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="blokirajOdabraneUredjajeGrupeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="autenticirajGrupuIoT">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="autenticirajGrupuIoTResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dodajNoviUredjajGrupi">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+<xs:element name="idUredjaj" type="xs:int" />
+<xs:element name="nazivUredjaj" type="xs:string" minOccurs="0" />
+<xs:element name="adresaUredjaj" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dodajNoviUredjajGrupiResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dajStatusUredjajaGrupe">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+<xs:element name="idUredjaj" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dajStatusUredjajaGrupeResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:statusUredjaja" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="blokirajGrupuIoT">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="blokirajGrupuIoTResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrirajGrupuIoT">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrirajGrupuIoTResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aktivirajOdabraneUredjajeGrupe">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+<xs:element name="odabraniUredjaji" type="xs:int" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aktivirajOdabraneUredjajeGrupeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="blokirajUredjajGrupe">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+<xs:element name="idUredjaj" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="blokirajUredjajGrupeResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dajSveUredjajeGrupe">
+<xs:sequence>
+<xs:element name="korisnickoIme" type="xs:string" minOccurs="0" />
+<xs:element name="korisnickaLozinka" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dajSveUredjajeGrupeResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:uredjaj" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="statusKorisnika">
+<xs:restriction base="xs:string">
+<xs:enumeration value="PASIVAN" />
+<xs:enumeration value="AKTIVAN" />
+<xs:enumeration value="NEAKTIVAN" />
+<xs:enumeration value="BLOKIRAN" />
+<xs:enumeration value="NEPOSTOJI" />
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="statusUredjaja">
+<xs:restriction base="xs:string">
+<xs:enumeration value="PASIVAN" />
+<xs:enumeration value="AKTIVAN" />
+<xs:enumeration value="BLOKIRAN" />
+<xs:enumeration value="NEPOSTOJI" />
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>

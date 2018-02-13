@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view locale="#{lokalizator.odabraniJezik}">
+        <body>
+
+            <ui:composition template="./predlozak.xhtml">
+
+                <ui:define name="naslov">
+                </ui:define>
+
+                <ui:define name="top">
+                </ui:define>
+
+                <ui:define name="left">
+                    <h:link value="#{m.prijava_pocetna}" outcome="pocetna" /><br/><br/>
+                </ui:define>
+
+                <ui:define name="content">
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <p:commandButton actionListener="#{pogled_3.pause()}" update="odg" value="#{m.pogled_3_pauziraj}"/>
+                            <p:commandButton actionListener="#{pogled_3.start()}" update="odg" value="#{m.pogled_3_pokreni}"/>   
+                            <p:commandButton actionListener="#{pogled_3.status()}" update="odg" value="#{m.pogled_3_status}"/>  
+                            <p:commandButton actionListener="#{pogled_3.stop()}" update="odg" value="#{m.pogled_3_stani}"/>
+                        </h:panelGrid>
+                        <br/>
+                        <h:panelGrid columns="3">
+                            <p:commandButton actionListener="#{pogled_3.IoT_MasterStart}" update="odg" value="#{m.pogled_3_IoT_Master_pokreni}"/>  
+                            <p:commandButton actionListener="#{pogled_3.IoT_MasterStop}" update="odg" value="#{m.pogled_3_IoT_Master_stani}"/>
+                            <p:commandButton actionListener="#{pogled_3.IoT_MasterWork}" update="odg" value="#{m.pogled_3_IoT_Master_radi}"/>  
+                            <p:commandButton actionListener="#{pogled_3.IoT_MasterWait}" update="odg" value="#{m.pogled_3_IoT_Master_cekaj}"/>
+                            <p:commandButton actionListener="#{pogled_3.IoT_MasterStatus}" update="odg" value="#{m.pogled_3_IoT_Master_status}"/>
+                        </h:panelGrid>
+                        <h:outputLabel value="#{pogled_3.odgovor}" id="odg"/>
+                    </h:form>
+                </ui:define>
+
+                <ui:define name="bottom">
+                </ui:define>
+
+            </ui:composition>
+
+        </body>
+    </f:view>    
+</html>

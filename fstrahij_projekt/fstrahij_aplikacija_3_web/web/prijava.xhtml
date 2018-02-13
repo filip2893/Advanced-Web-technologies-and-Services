@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+        <body>
+
+            <ui:composition template="./predlozak.xhtml">
+
+                <ui:define name="naslov">
+                </ui:define>
+
+                <ui:define name="top">
+                </ui:define>
+                <ui:define name="left">
+                    <h:link value="pocetna" outcome="pocetna" /><br/>
+                </ui:define>
+                <ui:define name="content">
+                        <h:form>
+                            <h:outputLabel value="Korisničko ime" for="korime" />
+                            <p:inputText value="#{prijava.korime}" id="korime" />
+                            <h:outputText value="" />
+                            <h:outputLabel value="Lozinka" for="lozinka" />
+                            <p:inputText value="#{prijava.lozinka}" id="lozinka" />
+                            <h:outputText value="" />
+                            <p:commandButton update="greske" actionListener="#{prijava.prijava()}" value="Prijava"/>
+                            <h:outputText value="#{prijava.greske}" id ="greske" />
+                        </h:form>                   
+                </ui:define>                    
+
+                <ui:define name="bottom">
+                    bottom
+                </ui:define>
+
+            </ui:composition>
+
+        </body>
+</html>

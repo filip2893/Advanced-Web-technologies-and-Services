@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view locale="#{lokalizator.odabraniJezik}">
+        <h:head>
+            <title>Facelet Title</title>
+        </h:head>
+        <body>
+            <ui:composition template="./predlozak.xhtml">                
+                <ui:define name="naslov">
+                    #{m.index_naslov}
+                </ui:define>
+
+                <ui:define name="top">
+                    #{m.index_naslov}
+                </ui:define>
+
+                <ui:define name="left">
+                    <h:form id="panel">
+                            <h:selectOneRadio value="#{lokalizator.odabraniJezik}">
+                                <f:selectItems value="#{lokalizator.izbornikJezika}" var="jezik"
+                                               itemLabel="#{jezik.labela}" itemValue="#{jezik.vrijednost}"/>
+                            </h:selectOneRadio>
+                            <p:commandButton value="#{m.index_promjena}" action="#{lokalizator.odaberiJezik}"  update="panel"/>
+                            <br/><br/>
+                            
+                            <h:panelGroup>
+                                <h:panelGrid columns="1" rendered="#{prijavaKorisnika.prijavaKorisnika}">
+                                    <h:link value="#{m.index_prijava}" outcome="prijava"/>                                    
+                                    <h:link value="#{m.index_registracija}" outcome="registracija"/>
+                                    <br/>
+                                </h:panelGrid>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                                <h:panelGrid columns="1" rendered="#{prijavaKorisnika.pregledOstalih}">
+                                    <h:link value="#{m.pogled_1_naslov}" outcome="pog1"/>                                    
+                                    <h:link value="#{m.pregledIoT_naslov}" outcome="pregledIoT"/>
+                                    <h:link value="#{m.pogled_3_naslov}" outcome="pog3"/>
+                                    <h:link value="#{m.pogled_4_naslov}" outcome="pog4"/>
+                                    <h:link value="#{m.dnevnik_naslov}" outcome="dnevnikRada"/>
+                                    <h:link value="Mail" outcome="mail"/>
+                                </h:panelGrid>
+                            </h:panelGroup>
+                        </h:form>
+
+                </ui:define>
+
+                <ui:define name="content">
+                </ui:define>
+
+                <ui:define name="bottom">
+                </ui:define>
+
+            </ui:composition>
+        </body>
+    </f:view>
+</html>
+

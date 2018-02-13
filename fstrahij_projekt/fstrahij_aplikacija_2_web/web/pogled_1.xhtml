@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{lokalizator.odabraniJezik}">
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <h:outputStylesheet name="./css/default.css"/>
+            <h:outputStylesheet name="./css/cssLayout.css"/>
+            <title>Facelets Template</title>
+        </h:head>
+
+        <h:body>
+
+            <div id="top">
+                <ui:insert name="top"></ui:insert>
+            </div>
+            <div>
+                <div id="left">
+                    <ui:insert name="left">
+                        <h:link value="#{m.prijava_pocetna}" outcome="pocetna" /><br/>
+                    </ui:insert>
+                </div>
+                <div id="content" class="left_content">
+                    <ui:insert name="content">
+                        <h:form id="forma"> 
+                            <br/>
+                            <p:commandButton actionListener="#{pogled_1.preuzmiPodatkeOKorisniku()}" value="#{m.pogled_1_gumb_dohvati}" update="forma"/>
+                                
+                            <h:panelGrid columns="2" >
+                                <h:outputLabel value="#{m.registracija_ime}" for="ime" />
+                                <p:inputText value="#{pogled_1.ime}" id="ime" />
+                                <h:outputLabel value="#{m.registracija_prezime}" for="prezime" />
+                                <p:inputText value="#{pogled_1.prezime}" id="prezime" />
+                                <h:outputLabel value="#{m.registracija_korime}" for="korime" />
+                                <p:inputText value="#{pogled_1.korimeNovo}" id="korime" />
+                                <h:outputLabel value="#{m.registracija_lozinka}" for="lozinka" />
+                                <p:inputText value="#{pogled_1.lozinka}" id="lozinka" />
+                                <h:outputLabel value="#{m.registracija_email}" for="email" />
+                                <p:inputText value="#{pogled_1.email}" id="email" />
+                                <p:commandButton actionListener="#{pogled_1.azurirajKorisnika()}" value="#{m.pogled_1_gumb_azuriraj}" update="forma"/>
+                                <h:outputText value="#{pogled_1.greske}" id ="greske" />
+                            </h:panelGrid>                            
+
+                            <p:commandButton value="#{m.pogled_1_gumb_korisnici}" action="#{pogled_1.dajSveKorisnike()}" update="tablica"/>
+                            <p:dataTable id="tablica" var="kor" value="#{pogled_1.korisnici}" 
+                                         paginator="true" rows="#{pogled_1.brStranica}">
+                                <p:column headerText="#{m.registracija_korime}">
+                                    <h:outputText value="#{kor.korime}"/>
+                                </p:column>
+                                <p:column headerText="#{m.registracija_lozinka}">
+                                    <h:outputText value="#{kor.lozinka}"/>
+                                </p:column>
+                                <p:column headerText="#{m.registracija_ime}">
+                                    <h:outputText value="#{kor.ime}"/>
+                                </p:column>
+                                <p:column headerText="#{m.registracija_prezime}">
+                                    <h:outputText value="#{kor.prezime}"/>
+                                </p:column>
+                                <p:column headerText="#{m.registracija_email}">
+                                    <h:outputText value="#{kor.email}"/>
+                                </p:column>
+                            </p:dataTable> 
+                        </h:form>    
+                    </ui:insert>
+                </div>
+            </div>
+            <div id="bottom">
+                <ui:insert name="bottom"></ui:insert>
+            </div>
+
+        </h:body>
+    </f:view>
+</html>

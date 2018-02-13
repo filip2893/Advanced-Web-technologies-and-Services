@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{lokalizator.odabraniJezik}">
+        <body>
+
+            <ui:composition template="./predlozak.xhtml">
+
+                <ui:define name="naslov">
+                </ui:define>
+
+                <ui:define name="top">
+                </ui:define>
+
+                <ui:define name="left">
+                     <h:link value="#{m.prijava_pocetna}" outcome="pocetna" /><br/><br/>
+                </ui:define>
+
+                <ui:define name="content">
+                    <h:form>       
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="#{m.pregledIoT_naziv}" for="noviNaziv" />
+                            <p:inputText value="#{odabirIoTPrognoza.noviNaziv}" id="noviNaziv" />
+                            <h:outputText value="" />
+                            <h:outputLabel value="#{m.pregledIoT_adresa}" for="noviAdresa" />
+                            <p:inputText value="#{odabirIoTPrognoza.noviAdresa}" id="noviAdresa" />
+                            <h:outputText value="" />
+                            <p:commandButton id="dodajIoT" 
+                                             update="raspoloziviIoT"
+                                             actionListener="#{odabirIoTPrognoza.noviUredjaj()}"
+                                             value="#{m.pregledIoT_dodaj}"/>
+
+                        </h:panelGrid>
+                        <h:panelGrid columns="3">
+                            <h:outputText value="#{m.pregledIoT_dostupni}"/>
+                            <h:outputText value="" />                        
+                            <h:selectManyListbox size="7" value="#{odabirIoTPrognoza.popisRaspoloziviIoT}" id="raspoloziviIoT" >
+                                <f:selectItems value="#{odabirIoTPrognoza.raspoloziviIoT}"  var="r" 
+                                               itemLabel="#{r.labela}" itemValue="#{r.vrijednost}" />
+                            </h:selectManyListbox>
+                            <p:commandButton value="#{m.pregledIoT_gumb_azuriraj}" 
+                                             update="azurirajNaziv azurirajAdresa inputAz"
+                                             actionListener="#{odabirIoTPrognoza.dohvatOdabraniIoTUredaji()}"/>
+                            <p:commandButton value="#{m.pregledIoT_zad_met}" 
+                                             update="zadMet vazMet adresa"
+                                             actionListener="#{odabirIoTPrognoza.dajZadnjeMeteo()}"/>
+                            <p:commandButton value="#{m.pregledIoT_zad_valjani}" 
+                                             update="zadMet vazMet adresa"
+                                             actionListener="#{odabirIoTPrognoza.dajVazeceMeteo()}"/>
+                            <p:commandButton value="#{m.pregledIoT_daj_adresu}" 
+                                             update="zadMet vazMet adresa"
+                                             actionListener="#{odabirIoTPrognoza.dajAdresu()}"/>
+                        </h:panelGrid>
+
+                        <h:panelGroup id="inputAz">
+                            <h:panelGrid columns="3" rendered="#{odabirIoTPrognoza.azuriranje}">
+                                <h:outputLabel value="#{m.pregledIoT_naziv}" for="azurirajNaziv" />
+                                <p:inputText value="#{odabirIoTPrognoza.azurirajNaziv}" id="azurirajNaziv" />
+                                <h:outputText value="" />
+                                <h:outputLabel value="#{m.pregledIoT_adresa}" for="azurirajAdresa" />
+                                <p:inputText value="#{odabirIoTPrognoza.azurirajAdresa}" id="azurirajAdresa" />
+                                <h:outputText value="" />
+                                <p:commandButton value="#{m.pregledIoT_unesi}" 
+                                                 update="raspoloziviIoT"
+                                                 actionListener="#{odabirIoTPrognoza.azurirajUredjaj()}"/>
+                            </h:panelGrid>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup id="vazMet">
+                            <h:panelGrid columns="3" rendered="#{odabirIoTPrognoza.vazeciMeteo}">
+                                <p:dataTable var="met" value="#{odabirIoTPrognoza.meteoPodaci}" 
+                                             paginator="true" rows="5">
+                                    <p:column headerText="#{m.pregledIoT_vlaznost}">
+                                        <h:outputText value="#{met.humidityValue}"/>
+                                    </p:column>
+                                    <p:column headerText="#{m.pregledIoT_tlak}">
+                                        <h:outputText value="#{met.pressureValue}"/>
+                                    </p:column>
+                                    <p:column headerText="#{m.pregledIoT_temp}">
+                                        <h:outputText value="#{met.temperatureValue}"/>
+                                    </p:column>
+                                    <p:column headerText="#{m.pregledIoT_brzina_vjetra}">
+                                        <h:outputText value="#{met.windSpeedValue}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:panelGrid>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup id="zadMet">
+                            <h:panelGrid columns="3" rendered="#{odabirIoTPrognoza.zadnjiMeteo}">
+                                <p:dataTable var="met" value="#{odabirIoTPrognoza.meteoPodaci}" 
+                                             paginator="true" rows="5">
+                                    <p:column headerText="#{m.pregledIoT_vlaznost}">
+                                        <h:outputText value="#{met.humidityValue}"/>
+                                    </p:column>
+                                    <p:column headerText="#{m.pregledIoT_tlak}">
+                                        <h:outputText value="#{met.pressureValue}"/>
+                                    </p:column>
+                                    <p:column headerText="#{m.pregledIoT_temp}">
+                                        <h:outputText value="#{met.temperatureValue}"/>
+                                    </p:column>
+                                    <p:column headerText="#{m.pregledIoT_brzina_vjetra}">
+                                        <h:outputText value="#{met.windSpeedValue}"/>
+                                    </p:column>
+                                </p:dataTable> 
+                            </h:panelGrid>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup id="adresa">
+                            <h:panelGrid columns="1" rendered="#{odabirIoTPrognoza.showAdresa}">
+                                <h:outputLabel value="#{odabirIoTPrognoza.adresa} "/>
+
+                            </h:panelGrid>
+                        </h:panelGroup>
+                    </h:form>
+                </ui:define>
+
+                <ui:define name="bottom">
+                </ui:define>
+
+            </ui:composition>
+
+        </body>
+    </f:view>    
+</html>

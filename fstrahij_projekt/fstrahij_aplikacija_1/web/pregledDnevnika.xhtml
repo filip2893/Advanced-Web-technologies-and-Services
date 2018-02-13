@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./predlozak.xhtml">
+            <ui:define name="naslov">
+                NWTiS - Dnevnik
+            </ui:define>
+
+            <ui:define name="top">
+                Pregled dnevnika
+            </ui:define>
+
+            <ui:define name="left">
+                <h:link value="Početna" outcome="pocetna" /><br/>
+                <h:link value="Korisnici" outcome="korisnik" /><br/>
+                <h:link value="Zahtjevi" outcome="zahtjev" /><br/>
+            </ui:define>
+
+            <ui:define name="content">
+               <h:form>
+                   <p:commandButton value="Ucitaj dnevnik" action="#{pregledDnevnika.dajDnevnik()}" update="tablica"/>
+                   <p:dataTable id="tablica" var="dn" value="#{pregledDnevnika.dnevnik}" 
+                                paginator="true" rows="#{pregledDnevnika.str}">
+                        <p:column headerText="Ipadresa">
+                            <h:outputText value="#{dn.ipadresa}"/>
+                        </p:column>
+                        <p:column headerText="Korisnik">
+                            <h:outputText value="#{dn.korisnik}"/>
+                        </p:column>
+                        <p:column headerText="Status">
+                            <h:outputText value="#{dn.status}"/>
+                        </p:column>
+                        <p:column headerText="Trajanje">
+                            <h:outputText value="#{dn.trajanje}"/>
+                        </p:column>
+                        <p:column headerText="Url">
+                            <h:outputText value="#{dn.url}"/>
+                        </p:column>
+                        <p:column headerText="Vrijeme">
+                            <h:outputText value="#{dn.vrijeme}"/>
+                        </p:column>
+                    </p:dataTable> 
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>
