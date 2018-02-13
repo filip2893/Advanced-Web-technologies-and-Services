@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{lokalizator.odabraniJezik}">
+        <h:head>
+            <title>#{m.slanjePoruke_naslov}</title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <h:outputLabel value="#{m.slanjePoruke_salje}" />
+                <h:inputText value="#{slanjePoruke.salje}" />
+                <br/>
+                <h:outputLabel value="#{m.slanjePoruke_prima}" />
+                <h:inputText value="#{slanjePoruke.prima}" />
+                <br/>
+                <h:outputLabel value="#{m.slanjePoruke_predmet}" />
+                <h:inputText value="#{slanjePoruke.predmet}" />
+                <br/>
+                <h:outputLabel value="#{m.slanjePoruke_sadrzaj}" />
+                <h:inputTextarea value="#{slanjePoruke.sadrzaj}" />
+                <br/>
+                <h:commandButton value="#{m.slanjePoruke_salji}" action="#{slanjePoruke.saljiPoruku()}" />
+                <br/><br/>
+                <h:commandLink value="#{m.index_naslov}" action="#{slanjePoruke.pocetna}" /> 
+                <br/>
+                <h:commandLink value="#{m.index_pregledPoruka}" action="#{slanjePoruke.pregledPoruka}" />
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
+

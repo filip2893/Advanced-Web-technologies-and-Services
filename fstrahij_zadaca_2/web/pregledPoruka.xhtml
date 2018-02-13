@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{lokalizator.odabraniJezik}">
+        <h:head>
+            <title>Pregled poruka</title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <h:commandLink value="#{m.index_naslov}" action="#{pregledPoruka.promjenaJezika()}" />
+                &nbsp;&nbsp;
+                <h:commandLink value="#{m.index_saljiPoruku}" action="#{pregledPoruka.saljiPoruku()}" /> 
+                <br/>
+                <h:outputLabel value="Odaberi mapu" />:
+                <h:selectOneMenu value="#{pregledPoruka.odabranaMapa}">
+                    <f:selectItems value="#{pregledPoruka.mape}" var="f" 
+                                   itemLabel="#{f.labela}" itemValue="#{f.vrijednost}"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Promjeni" action="#{pregledPoruka.promjenaMape()}"/>
+                <br/>
+                <h:outputLabel value="Traži"/>:
+                <h:inputText value="#{pregledPoruka.traziPoruke}"/>
+                <h:commandButton value="Traži" action="#{pregledPoruka.traziPoruke()}"/>
+                <br/>
+                <h:dataTable value="#{pregledPoruka.poruke}" var="p">
+                    <h:column>
+                        <f:facet name="header">ID</f:facet>
+                        <h:outputText value="#{p.id}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Predmet</f:facet>
+                        <h:outputText value="#{p.predmet}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Šalje</f:facet>
+                        <h:outputText value="#{p.salje}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Vrijeme slanja</f:facet>
+                        <!--<f:convertDateTime pattern=""/>-->
+                        <h:outputText value="#{p.vrijemeSlanja}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Sadržaj</f:facet>
+                        <h:outputText value="#{p.sadrzaj}" />
+                    </h:column>
+                </h:dataTable>
+                <br/>
+                <h:outputText value="Ukupno poruka"/>:
+                <h:outputText value="#{pregledPoruka.ukupnoPorukaMapa}" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <h:commandButton value="Prethodne" action="#{pregledPoruka.prethodnePoruke()}"/>
+                &nbsp;&nbsp;
+                <h:commandButton value="Sljedeće" action="#{pregledPoruka.sljedecePoruke()}"/>                
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
+
