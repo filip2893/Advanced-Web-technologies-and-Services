@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./predlozak.xhtml">
+
+            <ui:define name="naslov">
+                NWTiS - Zadaca 4 - Promjene
+            </ui:define>
+
+            <ui:define name="top">
+                Pregled promjena IoT uređaja
+            </ui:define>
+
+            <ui:define name="left">
+                <h:link value="Početna" outcome="pocetna" /><br/>
+                <h:link value="Dnevnik" outcome="dnevnik" /><br/>
+                <h:link value="Pregled IoT" outcome="iot" /><br/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <br/>
+                    <h:outputLabel for="id" value="Id:"/>
+                    <p:inputText id="id" value="#{pregledPromjena.id}"/>
+                    <br/>
+                    <h:outputLabel for="naziv" value="Naziv:"/>
+                    <p:inputText id="naziv" value="#{pregledPromjena.naziv}"/>                    
+                    <br/>
+                    <p:commandButton value="Dohvati" update="promjene" actionListener="#{pregledPromjena.preuzmiPodatkeIzPromjena()}"/>
+                    <p:dataTable var="p" value="#{pregledPromjena.promjene}" id="promjene">
+                        <p:column headerText="Naziv">
+                            <h:outputText value="#{p.naziv}"/>
+                        </p:column>
+                        <p:column headerText="Latitude">
+                            <h:outputText value="#{p.latitude}"/>
+                        </p:column>
+                        <p:column headerText="Longitude">
+                            <h:outputText value="#{p.longitude}"/>
+                        </p:column>
+                        <p:column headerText="Status">
+                            <h:outputText value="#{p.status}"/>
+                        </p:column>
+                        <p:column headerText="Vrijeme kreiranja">
+                            <h:outputText value="#{p.vrijemeKreiranja}"/>
+                        </p:column>
+                        <p:column headerText="Vrijeme promjene">
+                            <h:outputText value="#{p.vrijemePromjene}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

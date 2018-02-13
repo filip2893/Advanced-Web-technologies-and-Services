@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <body>
+        <ui:composition template="./predlozak.xhtml">
+
+            <ui:define name="naslov">
+                NWTiS - Zadaća 4
+            </ui:define>
+
+            <ui:define name="top">
+                NWTiS - Zadaća 4
+            </ui:define>
+
+            <ui:define name="left">
+                <h:link value="Pregled IoT" outcome="iot" /><br/>
+                <h:link value="Dnevnik" outcome="dnevnik" /><br/>
+                <h:link value="Promjene" outcome="promjene" /><br/>
+            </ui:define>
+
+            <ui:define name="content">
+                Stranica za pregled IoT uređaja i njihovih prognoze vremena.
+                Pregled dnevnika i promjne uređaja.
+            </ui:define>
+
+        </ui:composition>
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+    </body>
+</html>
+
